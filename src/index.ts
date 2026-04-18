@@ -112,7 +112,7 @@ server.registerTool(
     const authors = [...text.matchAll(/<name>(.*?)<\/name>/g)].map(m => m[1].trim()).join(", ");
 
     const aiResponse = await groq.chat.completions.create({
-      model: "llama3-8b-8192",
+      model: "llama-3.1-8b-instant",
       messages: [
         { role: "system", content: "You are an expert neuroscience researcher." },
         {
@@ -159,7 +159,7 @@ server.registerTool(
     const papersText = titles.map((t, i) => `Paper ${i+1}: ${t}\nAbstract: ${abstracts[i]}`).join("\n\n");
 
     const aiResponse = await groq.chat.completions.create({
-      model: "llama3-8b-8192",
+      model: "llama-3.1-8b-instant",
       messages: [
         { role: "system", content: "You are an expert neuroscience researcher who identifies research gaps." },
         {
@@ -208,7 +208,7 @@ server.registerTool(
     const [paper1, paper2] = await Promise.all([fetchPaper(arxiv_id_1), fetchPaper(arxiv_id_2)]);
 
     const aiResponse = await groq.chat.completions.create({
-      model: "llama3-8b-8192",
+      model: "llama-3.1-8b-instant",
       messages: [
         { role: "system", content: "You are an expert neuroscience researcher." },
         {
@@ -248,7 +248,7 @@ server.registerTool(
   },
   async ({ analysis_type }) => {
     const aiResponse = await groq.chat.completions.create({
-      model: "llama3-8b-8192",
+      model: "llama-3.1-8b-instant",
       messages: [
         { role: "system", content: "You are an expert neuroscience programmer. Write clean Python code." },
         {
